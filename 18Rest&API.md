@@ -132,7 +132,7 @@ API
     + REST关注一致性，如果使用HTTP，需要尽可能使用HTTP的特性，而不是去发明新的公约
 
 
- ![](./18-RESTvsRPC.png)
+ ![](./assets/18-RESTvsRPC.png)
 
  ==第三个45分钟==
  微服务 是用来拆开大project来支持多团队开发的。
@@ -147,13 +147,19 @@ API Authentication & Authorization
 
 可以用UML来梳理User WebAPP RESTBackend 之间的交换
 授权流行使用JWT（JSon web token）
-![](./18-JSTToken.png)
+![](./assets/18-JSTToken.png)
 
-![](./18-Authentication&Authorization.png)
- homework:
- www.developers.google.com/map/documentation/direction/start
+![](./assets/18-Authentication&Authorization.png)
+ 
+ 
+ 
+ homework
+ : www.developers.google.com/map/documentation/direction/start
 1.read and understand the json format
 2.create get method url for route from sunnybank to brisbane CBD
     1. distance and time for travvel(driving)
     2. Time for travel consider congestion in 9am weekday and sunday(driving)
     3. public transport with lowest walking distance
+
+: Tesltra messaging api
+    www.dev.telstra.com/content/messaging.api
