@@ -76,17 +76,36 @@ databases
 
 collections(对应relational db的table)
 - show collections
-- db.classes.insertOne({name: 'first class'})
-  db.classes.insertOne({time: '1'})
+
 - 因为没有schema限制，所以同一个collection里面可以有结构不同的documents
 - 如果对结构有要求，可以用中间件校验
 
+
 documents(对应rdb的row)
- - db.classes.find()
-- db.classes.findOne()
+
 
 
 fields(对应rdb的 column)
 - _id是自动插上的field
--data types: object, text, array, boolean,Number(int32, int64, float),Date(ISODate,timestamp)
+- data types: object, text, array, boolean,Number(int32, int64, float),Date(ISODate,timestamp)
 
+
+Create:
+- db.classes.insertOne({name: 'first class'})
+  db.classes.insertOne({time: '1'})
+  db.classess.insertMany([{name:'2nd class'},{score:30}])
+
+Find:
+- db.classess.find({time:{$lt:300}})
+- db.classes.find({name:{first class}})
+- db.classes.find()
+- db.classes.findOne()
+
+Update:
+- db.colection.update({_id:ObjecId("snco23rf441e")},{time:500})
+更多的updateOne的语法看文档。
+
+Delete:
+- db.classes.deleteOne({time: 504})
+
+*可以用expresion条件的
