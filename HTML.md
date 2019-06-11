@@ -184,4 +184,13 @@ Absolute links must have well formed URLs that include the protocol at the begin
 
 The rel attribute describes the relationship of the target object to the linked object.
 
+lists
+=======
+ul - unordered list
+    li - list item
+ol - ordered list
+    li - list item
+dl - discription/definition list, grouping of terms and descriptions
+    dt - description/definition term
+    dd - definition
 

@@ -63,4 +63,11 @@ basic images:
 - float-left   float-right
 - text-center =>center the image and text.
 - max-auto => makes the image block and center it 
-- figure
+- figure => css figure class makes the text font look a bit smaller and neat
+
+(new feature, not supported by all browsers)
+variables:
+
+
+var()
+:root=>redefine
