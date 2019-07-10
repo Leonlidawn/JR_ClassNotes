@@ -194,3 +194,23 @@ dl - discription/definition list, grouping of terms and descriptions
     dt - description/definition term
     dd - definition
 
+
+浏览器加载
+--
+- 加载过程： 
+    当浏览器获得一个html文件时，会”自上而下“加载，并在加载过程中进行解析渲染。  
+    
+    加载过程中遇到外部css文件，浏览器另外发出一个请求，来获取css文件。
+    
+    遇到图片资源，浏览器也会另外发出一个请求，来获取图片资源。这是异步请求，并不会影响html文档进行加载。 
+    但是当文档加载过程中遇到js文件，html文档会挂起渲染（加载解析渲染同步）的线程，不仅要等待文档中js文件加载完毕，还要等待解析执行完毕，才可以恢复html文档的渲染线程。
+
+- 一个不太严谨但方便记忆的口诀：JS 全阻塞，CSS 半阻塞：
+
+    JS 会阻塞后续 DOM 解析以及其它资源(如 CSS，JS 或图片资源)的加载。CSS不阻塞DOM的加载和解析（它只阻塞DOM的渲染呈现。这里谈加载），不会阻塞其它资源(如图片)的加载，但是会阻塞 后续JS 文件的执行（原因之一是，js执行代码可能会依赖到css样式。css只阻塞执行而不阻塞js的加载）。
+    
+    鉴于上面的特性，当css后面存在js的时候，css会间接地阻塞js后面资源的加载（css阻塞js，js阻塞其他资源 ）。
+    
+    现代浏览器会进行 prefetch 优化，浏览器在获得 html 文档之后会对页面上引用的资源进行提前下载
+
+链接：https://www.zhihu.com/question/263866883/answer/276139578
