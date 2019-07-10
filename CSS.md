@@ -19,6 +19,18 @@ in style tag in head section:
 </body>
 ```
 
+external file:
+```
+<head>
+   ...
+     <link href="_css/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    ...
+</body>
+```
+
 
 
 ==short hand notation==

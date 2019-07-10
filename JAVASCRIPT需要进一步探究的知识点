@@ -1,0 +1,31 @@
+避免触发事件的默认动作
+--
+
+Putting return false; in the inline onclick attribute prevents the default behavior (navigation) from occurring. You can also achieve this by clobbering the onclick attribute in JavaScript (i.e. assigning the .onclick property to be a function that returns false), but that's frowned upon as old-fashioned and potentially harmful (it would overwrite any additional event listeners attached to that event, for example).
+
+The modern way to prevent the <a> element's default click behavior from occurring is simply to call the .preventDefault() method of the triggering event from within the attached event listener. You can attach the listener the standard way, using .addEventListener()
+
+```
+// this works but is not recommended:
+document.querySelector(".clobbered").onclick = function() {
+  return false;
+};
+
+// this doesn't work:
+document.querySelector(".attached").addEventListener("click", function() {
+  return false;
+});
+
+// this is the preferred approach:
+document.querySelector(".attachedPreventDefault").addEventListener("click", function(e) {
+  e.preventDefault();
+});
+```
+```
+<a href="/fake" onclick="return false;">If you click me, I don't navigate</a><br/>
+<a class="clobbered" href="/fake">If you click me, I don't navigate</a>
+<br/>
+<a class="attached" href="/fake">If you click me, I navigate</a>
+<br/>
+<a class="attachedPreventDefault" href="/fake">If you click me, I don't navigate</a>
+```
