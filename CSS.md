@@ -678,3 +678,4 @@ viewport的width包含了scroll bar的width
 ```
 当min-width和max-width取值相同，后deined的优先生效。因此在640px,max-width那个生效。
 
+
