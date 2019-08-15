@@ -315,9 +315,10 @@ text-transform 文字转换
 取值： capitalize uppercase lowercase none
 
 
-display: inline, block, inline block
+display: inline, block, inline block, grid
 ====
 block:
+--
 - 上下左右都可以加padding margin
 - height = content
 - width = 100% of container
@@ -326,6 +327,7 @@ block:
 - div p h1
 
 inline:
+--
 -  左右可以加padding margin 但上下不能改。
 - height and width = content
 - elements align left, in a line.
@@ -335,11 +337,70 @@ inline:
 
 
 inline block:
+--
 - inline elements with padding and margins added on all four sides
 - makes inner elements have block for display. 
 - 也相当与一个可以和其它元素同行显示的block。
 
+grid:
+--
+www.gridcalculator.dk
+- conventionally consists of container and items
+- define column widths and row heights in continer css, eg 3 columns and 2 rows
+    - grid-template-columns: 200px 200px 200px;
+    - grid-template-rows: 300px 175px; 
+    - grid特有的新unit， fr, 可代替px, 用来设定比例  . eg.grid-template-columns:  2fr 1fr 1fr;
+- then the gaps
+    - grid-column gap: 10px;
+    - grid-row gap: 20px;
+
+html
+```
+<div class="grid-container">
+    <div class="grid-item">
+    
+    </div>
+    <div class="grid-item">
+    
+    </div>
+    <div class="grid-item">
+    
+    </div>
+</div>
+```
+css
+```
+.grid-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 300px 175x;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.grid-item{
+    border: 1px solid #222;
+    text-align:center;
+}
+
+```
+
+flex
+--
+- convention is to name classes with flex-container and flex-item
+- 比grid更加简洁
+- 在flexitem里面set width，而不是在container定义。column height是自动的对齐到最长的column的。
+- 展示方向flex-direction: column|row-reverse
+- 排版 flex-flow: row wrap;
+- 排版 justify-content: flex-end|center|space-btween|space-around;
+更多排版:
+cssreference.id/flexbox
+更多grid vs flex:
+https://www.webdesignerdepot.com/2018/09/grid-vs-flexbox-which-should-you-choose/
+
+
 box model:
+==
 - width and height: sets speciic size for the content box
 - padding: space inside of the elementt
 - margin: space outside of the element
@@ -347,12 +408,17 @@ box model:
 
 ```
 |m|b|p.content.p|b|m|
+--
+- convention is to use flex-container and flex-item as classes
 ```
 
 
 margin/外边距:
-http://www.hicss.net/do-not-tell-me-you-understand-margin/
 --
+--
+- convention is to use flex-container and flex-item as classes
+http://www.hicss.net/do-not-tell-me-you-understand-margin/
+
 margin始终是透明的。
 外边距的 margin-width 的值类型有：auto | length | percentage
 1、如果margin只有一个值，表示上右下左的margin同为这个值。
@@ -677,5 +743,6 @@ viewport的width包含了scroll bar的width
 }
 ```
 当min-width和max-width取值相同，后deined的优先生效。因此在640px,max-width那个生效。
+
 
 
