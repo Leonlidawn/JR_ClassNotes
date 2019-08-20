@@ -110,6 +110,19 @@ ouliners 是html5特有的内容标识 标签，显示内容之间的关联性
 non-sectional and sementic elements:除了div以外，其它划分页面的主要内容和次要内容,illustrates the meaning of the content, you are using semantics .
 
 ARIA： 用attribute来辅助screen reader
+- roles:purpose of element
+- properties: chariteristic of element
+- states: describe the interaction
+```
+<header role="banner">
+page header content
+</header>
+
+<main role="main">
+main page content
+<div class="alter-box" role="alert">Alert!</div>
+</main>
+```
 
 
 

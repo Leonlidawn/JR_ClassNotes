@@ -48,6 +48,7 @@ top 和 down是0, left 和 right为auto
 
 权重
 ===
+https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048
 
 同权重css后来的样式会覆盖先定义的。
 
@@ -115,7 +116,11 @@ eg.  .highlight{}
 id - used for unique or global styles that are not repeated
 eg. #global-foter{}
 
-attribute selector - use `[attr]` or `[attr=""]`
+attribute selector 
+- use `[attr]` or `[attr=""]`
+- [class*="example"] selects an element with a class of "example" anywhere within the value
+
+
 eg.
 ```
  input <input type="search">
@@ -744,5 +749,315 @@ viewport的width包含了scroll bar的width
 ```
 当min-width和max-width取值相同，后deined的优先生效。因此在640px,max-width那个生效。
 
+image图像格式
+==
+- pixel density: the number of pixels within a space. 
+eg. units are PPI(pixels per inch) or DPI(dots per inch)
+- retina displays 比正常的屏幕ppi/dpi多了一倍。
+
+Raster images(bitmap images):
+--
+ composed of tiny squares called pixels
+ can become blury when it is zoomed in
+- jpeg: Joint Photographic Experts Group. 16bit format - blends reds, greens. and blues to create millions of colors. normally used for photographs.
+- Gif: graphics interchange format.j can be animated. 256 colors and supoorts transparency. giphy.com , getcloudapp.com is for making gifs
+- PNG: portable network graphics, png-8 has 256 colors with no transpency, png-24 has millions of colors and supports transparency. 
+
+vector images:
+--
+ composed of lines and curves called paths
+
+- svg:Scalable Vector Graphics (SVG) is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation. composed of lines and paths. edges of vectore image are always smooth 
+
+- html uses predefined tags, and xml uses custom tagas
+- thenounproject.com
+- svg 可以通过css修改。可以zai file content 里面的css修改，也可以给svg加一个class通过外部的css修改。
+- 目前最好的加载svg的方法： https://vecta.io/blog/best-way-to-embed-svg
+- svg file content :
+```
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 595 595" style="enable-background:new 0 0 595 595;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;}
+</style>
+<g>
+	<rect x="0.5" y="-0.8" class="st0" width="595.3" height="595.3"/>
+	<path class="st1" d="M308.8,443.1c17,0,30.9,11.8,31.4,26.6c0.2,5.3-4,9.7-9.3,9.7h-31.4c-47.9,0-109.2,11.7-146.3-25.5
+		c-19.1-19.2-30.2-45.8-28.7-74.1c1.4-26.4,15.3-50.7,36.5-65.2c7.1-4.9,14.7,5.8,7.8,10.9c-16,11.8-26.6,30.2-27.7,51
+		c-1.2,22.6,7.6,43.9,23,59.1c-6.2-79.2,73.7-106.7,99.3-162.1c2.8-6.2,4.6-12,5.5-17.8c39.1,8.5,87.4-18.7,44.8-95.9
+		c64.7,144.9-167.6,91.6-47.8-10c20.2-37.5,74.2-52.9,115.9-16.5c13,11.4,22.8,18.1,40.7,17c7.3-0.5,15.7-0.6,22.7,1.1
+		c2.3-4.5,7.1-7.6,12.5-7.6c7.8,0,14.1,6.3,14.1,14.1c0,6.9-5,12.6-11.5,13.9c-0.5,3.7-1.8,8.1-4,13.1
+		c-16.6,37.9-43.9,47.2-78.9,54.3c-27.8,5.7-7.1,23.9,1.9,51.9c14.3,44.5-5.6,72.7-10.6,104.9c-2.5,16.2-5.5,47.2,18.5,47.2
+		c17,0,30.9,11.8,31.4,26.6c0.2,5.3-4,9.7-9.3,9.7h-44.3c-15.7,0-28.9-30.6-35.3-57.9c6.3-12.5,8-26.2,3.8-39
+		c-9.5-29.3-46.4-42.6-82.4-29.7c-7.7,2.7-14.6,6.5-20.8,10.9c7.4-4.4,15.8-7.8,24.9-9.6c35-7.1,67.3,10.1,72.2,38.5
+		c3.5,20.1-8,39.3-24.1,51.1C305.2,443.3,307,443.1,308.8,443.1L308.8,443.1z M368.2,150.2c3.8,0.6,6.7,3.5,7.5,7.2
+		c0-0.1,0-0.3,0.1-0.4c1.1-7.6-3.9-14.6-11.2-15.7c-7.3-1.1-14,4.3-15.2,11.9c-1.1,7.6,3.9,14.6,11.2,15.7c1.4,0.2,2.8,0.2,4.2-0.1
+		c-4.6-1-7.6-5.6-6.9-10.5C358.6,153.1,363.2,149.5,368.2,150.2z"/>
+</g>
+</svg>
+```
+- Png
 
 
+suportting hight pixel density display:
+--
+- use icon fonts or svgs because they are vector based and scalable format. Allow css to make changes to them. But these are not suitable for photographs.
+- image replacement, use suitable image base on the type of diplay. JS requiared to detect the resolution and dynamically replace html images. Retina.Js is a liabrary for this.
+- background image replacement with media queries.
+
+```
+header{
+    background: url(img.jpg);
+}
+@media(min-resolution:192 dpi){
+    /*using a larger image for retina display*/
+    header{
+        background: url(image@2x.jpg);
+    }
+}
+```
+
+兼容性
+==
+https://caniuse.com
+里面有说不同浏览器的写法。
+
+vender prefix 
+--
+先写带prefix的，不带prefix的放到最后。浏览器会从上到下scan 直到找到对应的prefix
+- android, ios,chrome and safari: -webkit-
+- internet Explorer: -ms-
+- firefox: -moz-
+- opera: -o-
+
+动画
+==
+transition
+--
+简单特效动画，从起点到终点两个形态的转换。
+用法， 放在原始状态
+longhand:
+transition-property: color;
+transition-duration: 1s;
+transition-timing-function: linear;
+transition-delay: 0.5;
+
+shorthand:
+transition-property:color 1s linear 0.5;
+
+can only work between when 2 properties have inbetween state.
+
+transition-property: color;
+transition-duration: 1s;
+transition-timing-function: linear | ease-out （先快后慢）| ease-in （先慢后快）|Ease-in-out （慢快慢）
+transition-delay: 0.5;
+```
+div{
+    backgroud-color: light-blue;
+    margin-left:0; 
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 0.5;
+}
+div:hover{
+    background-color: white;
+    margin-lect:100
+}
+```
+
+@keyframes
+--
+相对比transition复杂的动画，可以定义多个属性一起变化.animation就是由多个keyframe组成的。
+3个部分：
+- name of animation
+- break point
+- css property to be animated
+属性：
+    animation-name: keyframe组名字;
+    aniamtion-duration: 时长;
+    animation-timing-funciotn:linear|ease-in|ease-out|ease-in-out;
+    animation-delay: 延时时长;
+    animation-interation-count: 重复次数 | infinite;
+
+```
+@keyframes bounceRed{
+    0%{
+        top:0px;
+    }
+    50%{
+        top:250px;
+    }
+    100%{
+        top:0px;
+
+    }
+}
+
+.ball{
+    width:50px;
+    height:50px;
+    position:absolute;
+    border-radius: 50%;
+    animation-name: bounceRed;
+    aniamtion-duration:1.5s;
+    animation-timing-funciotn:ease;
+    animation-dekat:1s;
+    animation-interation-count: 3;
+}
+```
+形状属性
+==
+改变默认float的文档流方框形状
+可以用 百分比值
+位置从方框左上角开始算
+eg.
+shape-outside:circle();
+clip-path:circle();
+
+circle(半径 at 横向位置 纵向位置)
+
+polygon(x-axis y-axis, x-axis y-axis, x-axis y-axis， 其它点..)
+
+inset
+https://tympanus.net/codrops/css_reference/inset/
+
+Responsive design tips
+==
+www.ia.net/topics/responsive-typography-the-basics/
+
+Absolute font size
+--
+commonly used and good for learning
+great for accuracy and control
+```
+body{
+    font-size: 20px;
+}
+h1{
+    font-size: 35px;
+}
+h2{
+    font-size: 30px;
+}
+.footnote{
+    font-size: 15px;
+}
+
+@media(max-width: 800px){
+    body{
+        font-size: 16px;
+    }
+    h1{
+        font-size: 28px;
+    }
+    h2{
+        font-size: 24px;
+    }
+    .footnote{
+        font-size: 12px;
+    }
+}
+```
+relative font size
+--
+use rem , just neet to change root element for overall changes.
+
+```
+html{
+    font-size: 1rem;
+}
+body{
+    font-size: 1.25rem;
+}
+h1{
+    font-size:2.1875rem;
+}
+h2{
+    font-size:1.1875rem;
+}
+.footnote{
+    font-size:0.9375rem;
+}
+
+@media(max-width: 600px){
+    html{
+           font-size: 0.75rem;
+    }
+}
+
+@media(max-width: 600px){
+    html{
+           font-size: 0.75rem;
+    }
+}
+```
+
+viewport units
+==
+viewport是浏览器的窗口
+viewport units是
+vw: viewport width
+vh: viewport height
+vmin: 宽或高两者中最小的
+vmax: 宽或高两者中最大的
+
+使用viewport units做fluid typography
+--
+不使用mediaqueries也可以做
+
+设置html的fontsize为viewport units，通常用vw然后其它再用rem。
+```
+html{
+    font-size: 2vw;
+}
+body{
+    font-size: 1.25rem;
+}
+h1{
+    font-size:2.1875rem;
+}
+h2{
+    font-size:1.1875rem;
+}
+.footnote{
+    font-size:0.9375rem;
+}
+```
+以下是一些额外的关于字体大小比例的讨论
+https://www.smashingmagazine.com/2016/05/fluid-typography/
+
+accessibilities
+--
+webaim.org 测试accessibilities
+
+visual
+- avoid adding text to image files, use an alt attribute.
+- random11y.com for color contrast
+
+motor
+- 可以use tabindex to control the tab flow.
+
+起名
+==
+- use funcitional names
+eg. alert button 比 redbutton好， except grid is ok to have grid1 grid2
+- use lowercase letters only
+- use - not _
+- css comment 
+```
+/*---------
+section comment block
+----------*/
+
+/*
+sub section comment block
+----------*/
+
+
+```
+
+refactoring
+==
