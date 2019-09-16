@@ -1,6 +1,9 @@
 Documentations:
 https://developer.mozilla.org/en-US/docs/Learn
 https://webplatform.github.io/docs/html/
+https://whatwg.org/
+
+http
 
     <!doctype html>
     <html lang="eng">
@@ -74,11 +77,15 @@ contents that involve interaction
 
 html formatting
 ==
+```
 <pre>pre tag, it literally display the text here as it is, 
 with no trimming of spaces or line breaks</pre>
 
 <i>i tag, italic, just for visual presentation, no meaning for screen readers</i>
-
+<mark>高亮</mark>
+<small>small text</small>
+<del>中间有横线crossed out</del>
+<ins>inserted text 下划线</ins>
 <em>em tag, emphasized text, this is logical tag</em>
 
 <strong>strong tag, strongly emphasized</strong>
@@ -88,7 +95,7 @@ Therefore 《br》 can be written as 《br /》 with no harm.
 
 <dt><b>dt tag</b></dt>
 <dd>in dd tag</dd>
-
+```
 named character entity 
 https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
 eg.
@@ -179,6 +186,29 @@ The figure element represents a unit of content, optionally with a caption, that
 
 
 
+- iframe:
+represents a nested browsing context, embedding another HTML page into the current one.
+iframe 里面是不能放内容的
+```
+<iframe id="googlemap" title="googlemap" width="300" height="200" src="网页地址">
+</iframe>
+```
+
+- vedio:
+这里的controls的值就是controls,不能通过给它赋值改变属性，而是需要把它移除才会不显示播放控制
+```
+<video controls width="250">
+<source src"/media examples/flower.mp4" type="video/mp4">
+sorry, your browser doesnot support embedded videos.
+</video>
+```
+
+- form:
+
+- image: 
+里面的不要放title，放caption比较好，不然很容易与alt重复。
+
+
 
 WAI-ARIA (Accessible Rich Internet Application)
 ===
@@ -192,6 +222,11 @@ To ensure download action of clicking a link,also put download attribute(html5) 
 
 也可以用#代表跳到本页某id。就如href="#section1“
 target="_blank" 常用来打开新页
+target="_self" 默认，opens the linked document in the same frame as it was clicked
+target="_parent" opens the linked document in the parent frame
+target="_top" opens the linked document in a full body of the window
+target="framename" opens the linked document in a named frame
+(frame已被淘汰)
 
 Absolute links must have well formed URLs that include the protocol at the beginning.
 
@@ -227,3 +262,11 @@ dl - discription/definition list, grouping of terms and descriptions
     现代浏览器会进行 prefetch 优化，浏览器在获得 html 文档之后会对页面上引用的资源进行提前下载
 
 链接：https://www.zhihu.com/question/263866883/answer/276139578
+
+
+
+storage
+==
+The Different Types of Storage in HTML 5
+window.localStorage - stores data with no expiration date.
+window.sessionStorage - stores data for one session (data is lost when the tab is closed)
