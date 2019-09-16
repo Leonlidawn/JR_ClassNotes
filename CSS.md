@@ -480,6 +480,8 @@ flex-direction:row|column|row-reverse|column-reverse
 
         }
         ```
+- margin: auto 
+    - Auto-margins eat up all the extra space in a flex container. 需要快速隔离分2组的情况这个比较简洁。
 
 更多排版:
   cssreference.id/flexbox
