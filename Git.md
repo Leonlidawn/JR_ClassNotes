@@ -68,12 +68,25 @@ git clone
 
 
 tracking branch的概念
-- tracking branch 是一个存在本地的代表远端分支的分支, caches remote info, 通常命名方式是```<remote>/<branch> eg.orgin/master```
+- tracking branch 是一个本地的与remote有直接联系的分支, caches remote info,  the branch it tracks is called an “upstream branch”（upstream branch通常命名方式是```<remote>/<branch> eg.orgin/master```.  git就是在把远端branch同步到tracking branch然后把你local working branch与它比较的。
 - tracking branch 只有在clone, fetch, pull 和 push的时候会被更新。
-- clone的时候会自动在本地创建tracking branch
+-  clone的时候会自动在本地创建tracking branch。 （checkout branch如果指定的branch只存在于远端的话也会创建）
   - 如果remote不是通过git clone加入的，而是git remote add ```<remote><url>```加入的，需要手动set remote tracking branch
-- 如果没有设置remote tracking branch, fetch pull push 不能没有参数， 因为都不知道从哪个remote执行，
-
+- 如果没有设置remote tracking branch, fetch pull push 不能没有参数， 因为都不知道从哪个remote执行
+  - 此时有两种途径解决：
+    - 每次explicitly 指定 remote
+      ```git pull <remote><branch>   ```
+         eg.
+      ```git pull origin/master```
+    - 定义upstream
+      - ```git branch --set-upstream-to= <remote><branch> <localbranch> ``` 
+          eg.
+        ```git branch --set-upstream-to=origin/master master ```
+      或者
+      - ```git branch -u origin/master```  
+      - 省略localbranch的话就是指定当前branch
+     
+  
 git remote
 - 显示远端名字
 - -v 显示详细链接信息， fetch 和 push的位置
@@ -86,8 +99,17 @@ git fetch
 
 
 git pull
-- 等同于
+- 从远端同步东西下来，等同于
  ```
   git fetch <remote> 
   git merge origin/<current-branch>.
  ```
+
+git push
+- 把local的东西同步到远端
+- ```git push -u <远端名字> <branch>``` 这里默认branch的名字是在本地和远端是相同的。
+- ```git push <远端名字> <local branch>: <不相同名字的remote branch>``` 这个如果remobranch是新的，也会在本地创建新的branch,但这个不会把新branch放进的push的设置里面。
+- 删除remote branch
+  - git push -d ```<远端名字> <branch> ```
+  - git push ```<远端名字>:<branch> ``` 这个等于push一个空的local branch上去，因为没有指定local branch. 然后远端就自动删除那个空的branch了
+  
