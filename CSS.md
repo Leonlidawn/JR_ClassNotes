@@ -42,7 +42,7 @@ because shorthand 中没被设定的值会回到默认
 ```
 body{
     width: 70%
-    margin: 0, auto
+    margin: 0 auto
 }
 ```
 
