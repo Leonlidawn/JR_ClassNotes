@@ -866,7 +866,7 @@ composed of lines and curves called paths
 
 - html uses predefined tags, and xml uses custom tagas
 - thenounproject.com
-- svg 可以通过 css 修改。可以 zai file content 里面的 css 修改，也可以给 svg 加一个 class 通过外部的 css 修改。
+- svg 可以通过 css 修改。可以 在 file content 里面的 css 修改，也可以给 svg 加一个 class 通过外部的 css 修改。
 - 目前最好的加载 svg 的方法： https://vecta.io/blog/best-way-to-embed-svg
 - svg file content :
 
@@ -943,8 +943,8 @@ https://caniuse.com
 
 ## transition
 
-简单特效动画，从起点到终点两个形态的转换。
-用法， 放在原始状态
+简单特效动画，从起点到终点两个形态的转换。 如果用js触发的话，只在css写原状态也可以。
+用法
 longhand:
 transition-property: color;
 transition-duration: 1s;
