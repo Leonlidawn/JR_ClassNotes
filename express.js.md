@@ -9,6 +9,32 @@
 在express中routing这是这个格式的:
 app.METHOD(PATH, HANDLER)
 
+```
+//app.all will match complete path
+app.all( "/product" , handler);
+// will match /product
+// won't match /product/cool   <-- important
+// won't match /product/foo    <-- important
+
+app.all( "/product/*" , handler);
+// won't match /product        <-- Important
+// will match /product/
+// will match /product/cool
+// will match /product/foo
+
+
+//app.use only sees whether url starts with the specified path
+app.use() 
+// will match /product
+// will match /product/cool
+// will match /product/foo
+
+//With app.use(), the "mount" path is stripped and is not visible to the middleware function.意思是handler不会知道前面匹配到的path部分是什么，只知道path的不匹配部分。
+
+
+
+```
+
 - path是路径
   - 如果用RESTful 设计的话 path里面用例如:id/:course/:time这样的方式传递参数。参数是路由地址的一部分。
   - 旧时代设计使用?。如果用?，那么？xxx是不会被当做路由地址的一部分的。
@@ -72,7 +98,7 @@ app.METHOD(PATH, HANDLER)
   
   model文件涉及数据库，下面是以mongodb为例，需要引入mongoose包。 mongoose.model('student', studentSchema);
   https://mongoosejs.com/docs/models.html
-  
+
       //model.js
 
       const mongoose = require('mongoose');
